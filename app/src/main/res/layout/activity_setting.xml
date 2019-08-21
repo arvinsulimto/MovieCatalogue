@@ -1,9 +1,35 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".SettingActivity">
+    tools:context=".SettingActivity"
+    android:orientation="vertical"
+    >
 
-</android.support.constraint.ConstraintLayout>
+    <android.support.v7.widget.Toolbar
+        android:id="@+id/toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/colorPrimary"
+        android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar"
+        />
+
+
+    <Switch
+        android:id="@+id/swRelease"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text= "@string/switchRelease"
+        android:layout_marginLeft="10dp"/>
+
+    <Switch
+        android:id="@+id/swDaily"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/switchDaily"
+        android:layout_marginLeft="10dp"/>
+
+
+</LinearLayout>

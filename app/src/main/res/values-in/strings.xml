@@ -27,4 +27,6 @@
     <string name="newReleaseToday">Film Yang Tayang Hari Ini</string>
     <string name="newMovies">Film Baru : </string>
     <string name="settings">Pengaturan</string>
+    <string name="switchRelease">Notifikasi Film Baru</string>
+    <string name="switchDaily">Notifikasi Harian</string>
 </resources>

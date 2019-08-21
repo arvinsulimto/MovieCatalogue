@@ -31,7 +31,6 @@ import java.util.Date;
 public class MainActivity extends AppCompatActivity {
     private PendingIntent pendingIntentDaily;
     private static final int DAILY_ALARM_REQUEST_CODE = 0;
-
     private PendingIntent pendingIntentRelease;
     private static final int RELEASE_ALARM_REQUEST_CODE = 1;
     MovieViewModel mViewModel;
@@ -55,7 +54,6 @@ public class MainActivity extends AppCompatActivity {
                     fragment = new FavouriteFragment();
                     getSupportFragmentManager().beginTransaction().replace(R.id.container_layout,fragment,fragment.getClass().getSimpleName()).commit();
                     return true;
-
             }
             return false;
         }
@@ -95,16 +93,16 @@ public class MainActivity extends AppCompatActivity {
                     cal.set(Calendar.SECOND,0);
                     cal.set(Calendar.AM_PM,Calendar.AM);
                     if(cal.getTimeInMillis() > System.currentTimeMillis()) {
-                    stackNotif.clear();
-                    stackNotif.addAll(movieTvResponse.getListData());
-                    Intent alarmIntent = new Intent(MainActivity.this, MovieReleaseReceiver.class);
-                    MovieTvResponse PassingData  = MovieTvResponse.getInstance();
-                    PassingData.setDataMovie(stackNotif);
-                    pendingIntentRelease = PendingIntent.getBroadcast(MainActivity.this, RELEASE_ALARM_REQUEST_CODE, alarmIntent, pendingIntentRelease.FLAG_UPDATE_CURRENT);
-                    AlarmManager manager = (AlarmManager) getSystemService(Context.ALARM_SERVICE);
-                    manager.setInexactRepeating(AlarmManager.RTC_WAKEUP, cal.getTimeInMillis(),AlarmManager.INTERVAL_DAY, pendingIntentRelease);
-                    }
-                };
+                            stackNotif.clear();
+                            stackNotif.addAll(movieTvResponse.getListData());
+                            Intent alarmIntent = new Intent(MainActivity.this, MovieReleaseReceiver.class);
+                            MovieTvResponse PassingData = MovieTvResponse.getInstance();
+                            PassingData.setDataMovie(stackNotif);
+                            pendingIntentRelease = PendingIntent.getBroadcast(MainActivity.this, RELEASE_ALARM_REQUEST_CODE, alarmIntent, pendingIntentRelease.FLAG_UPDATE_CURRENT);
+                            AlarmManager manager = (AlarmManager) getSystemService(Context.ALARM_SERVICE);
+                            manager.setInexactRepeating(AlarmManager.RTC_WAKEUP, cal.getTimeInMillis(), AlarmManager.INTERVAL_DAY, pendingIntentRelease);
+                        }
+                }
             }
         });
 

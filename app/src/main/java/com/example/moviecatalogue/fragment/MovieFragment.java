@@ -30,7 +30,6 @@ import com.example.moviecatalogue.models.MovieTvResponse;
 import com.example.moviecatalogue.models.MoviesTv;
 import com.example.moviecatalogue.viewmodels.MovieViewModel;
 import java.util.ArrayList;
-
 import java.util.List;
 
 

@@ -25,4 +25,6 @@
     <string name="newReleaseToday">New Release Today</string>
     <string name="newMovies">New Movie : </string>
     <string name="settings">Setting</string>
+    <string name="switchRelease">Release Movie Notification</string>
+    <string name="switchDaily">Daily Notification</string>
 </resources>

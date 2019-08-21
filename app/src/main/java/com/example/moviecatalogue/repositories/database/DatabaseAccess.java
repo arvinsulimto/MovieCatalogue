@@ -136,9 +136,57 @@ public class DatabaseAccess {
         return true;
     }
 
+    public int checkDailyNotification(){
+        open();
+        int daily=0;
+        Cursor c = db.rawQuery("SELECT * FROM Reminder WHERE ID = 2",null);
+        if(c.moveToFirst()){
+            daily = c.getInt(c.getColumnIndex("Value"));
+        }
+        close();
+        return daily;
+    }
 
+    public int checkReleaseNotification(){
+        open();
+        int release = 0;
+        Cursor c= db.rawQuery("SELECT * FROM Reminder WHERE ID = 1",null);
+        if(c.moveToFirst()){
+            release = c.getInt(c.getColumnIndex("Value"));
+        }
+        close();
+        return release;
+    }
 
+    public Boolean updateDailyNotification(int value){
+        open();
+        ContentValues contentValues = new ContentValues();
+        contentValues.put("Value",value);
+        long ins = db.update("Reminder",contentValues,"ID=2",null);
+        if(ins==-1){
+            close();
+            return false;
+        }
+        else{
+            close();
+            return true;
+        }
+    }
 
+    public Boolean updateReleaseNotification(int value){
+        open();
+        ContentValues contentValues = new ContentValues();
+        contentValues.put("Value",value);
+        long ins = db.update("Reminder",contentValues,"ID=1",null);
+        if(ins == -1){
+            close();
+            return false;
+        }
+        else {
+            close();
+            return true;
+        }
+    }
 
 
 }
