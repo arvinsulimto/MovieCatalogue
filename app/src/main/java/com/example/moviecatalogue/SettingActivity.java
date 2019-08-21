@@ -40,12 +40,11 @@ public class SettingActivity extends AppCompatActivity {
         swRelease.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
             @Override
             public void onCheckedChanged(CompoundButton compoundButton, boolean b) {
-                Boolean upRelease;
                 if(!b){
-                    upRelease = sViewModel.updateReleaseNotification(0);
+                     sViewModel.updateReleaseNotification(0);
                 }
                 else{
-                    upRelease = sViewModel.updateReleaseNotification(1);
+                    sViewModel.updateReleaseNotification(1);
                 }
             }
         });
@@ -53,12 +52,12 @@ public class SettingActivity extends AppCompatActivity {
         swDaily.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
             @Override
             public void onCheckedChanged(CompoundButton compoundButton, boolean b) {
-                Boolean upDaily;
+
                 if(!b){
-                    upDaily = sViewModel.updateDailyNotification(0);
+                    sViewModel.updateDailyNotification(0);
                 }
                 else{
-                    upDaily = sViewModel.updateDailyNotification(1);
+                    sViewModel.updateDailyNotification(1);
                 }
             }
         });
