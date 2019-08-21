@@ -1,0 +1,28 @@
+<resources>
+    <string name="app_name">MovieCatalogue</string>
+    <string name="title_movie">Movie</string>
+    <string name="title_tv_show">Tv Show</string>
+    <string name="rating_text">Rating : </string>
+    <string name="overview_text">Overview</string>
+    <string name="language_setting">Language Setting</string>
+    <string name="description_rating">Rating Description</string>
+    <string name="description_image">Poster Item</string>
+
+
+    <string name="favourite">Favourite</string>
+    <string name="successAdd">Successfully Love Movie/Tv Show</string>
+    <string name="error">Error</string>
+    <string name="successDelete">Successfully Unlike Movie/Tv Show</string>
+    <string name="search">Search...</string>
+    <string name="errorFetch">Error Fetch Data From Database</string>
+    <string name="empty_text">No Data</string>
+    <string name="appwidget_text">Favourite Film</string>
+
+    <string name="dailynotification_title">Daily Notification</string>
+    <string name="subTextDailyNotification">Explore New Movies or Tv Show With Us</string>
+
+    <string name="newMovie"> New Movies</string>
+    <string name="newReleaseToday">New Release Today</string>
+    <string name="newMovies">New Movie : </string>
+    <string name="settings">Setting</string>
+</resources>

@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="app_name">MovieCatalogue</string>
+    <string name="title_movie">Film</string>
+    <string name="title_tv_show">Acara Tv</string>
+    <string name="rating_text">Nilai : </string>
+    <string name="overview_text">Sinopsis</string>
+    <string name="language_setting">Setting Bahasa</string>
+    <string name="description_rating">Deskripsi Rating</string>
+    <string name="description_image">Item Poster</string>
+
+    <string name="favourite">Favorit</string>
+    <string name="successAdd">Sukses Untuk Menyukai Film/Acara Tv</string>
+    <string name="error">Kesalahan</string>
+    <string name="successDelete">Sukses untuk tidak Menyukai Film/Acara Tv</string>
+    <string name="search">Cari...</string>
+    <string name="errorFetch">Ada Masalah Ketika Mengambil Data Dari Database</string>
+    <string name="empty_text">Tidak Ada Data</string>
+    <string name="appwidget_text">Favorit Film</string>
+
+    <string name="dailynotification_title">Notifikasi Harian</string>
+    <string name="subTextDailyNotification">Carilah Film atau Acara Tv Yang Berkualitas di Tempat Kami</string>
+
+
+    <string name="newMovie"> Film Baru</string>
+    <string name="newReleaseToday">Film Yang Tayang Hari Ini</string>
+    <string name="newMovies">Film Baru : </string>
+    <string name="settings">Pengaturan</string>
+</resources>
