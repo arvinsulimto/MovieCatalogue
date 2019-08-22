@@ -1,3 +1,4 @@
 <resources>
     <string name="app_name">FavouriteApps</string>
+    <string name="noData">No Data in Favourite Apps</string>
 </resources>
