@@ -11,7 +11,13 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".SettingActivity"></activity>
+        <provider
+            android:name=".repositories.database.provider.CatalogueContentProvider"
+            android:authorities="com.example.moviecatalogue.repositories.database.provider"
+            android:enabled="true"
+            android:exported="true"></provider>
+
+        <activity android:name=".SettingActivity" />
 
         <receiver android:name=".widget.FavouriteWidget">
             <intent-filter>

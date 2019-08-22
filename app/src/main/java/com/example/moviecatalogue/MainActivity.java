@@ -27,7 +27,6 @@ import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
 
-
 public class MainActivity extends AppCompatActivity {
     private PendingIntent pendingIntentDaily;
     private static final int DAILY_ALARM_REQUEST_CODE = 0;
@@ -100,7 +99,7 @@ public class MainActivity extends AppCompatActivity {
                             PassingData.setDataMovie(stackNotif);
                             pendingIntentRelease = PendingIntent.getBroadcast(MainActivity.this, RELEASE_ALARM_REQUEST_CODE, alarmIntent, pendingIntentRelease.FLAG_UPDATE_CURRENT);
                             AlarmManager manager = (AlarmManager) getSystemService(Context.ALARM_SERVICE);
-                            manager.setInexactRepeating(AlarmManager.RTC_WAKEUP, cal.getTimeInMillis(), AlarmManager.INTERVAL_DAY, pendingIntentRelease);
+                            manager.setInexactRepeating(AlarmManager.RTC_WAKEUP, cal.getTimeInMillis()/1000, AlarmManager.INTERVAL_DAY, pendingIntentRelease);
                         }
                 }
             }
@@ -119,7 +118,7 @@ public class MainActivity extends AppCompatActivity {
             Intent alarmIntent = new Intent(this, DailyNotificationReceiver.class);
             pendingIntentDaily = PendingIntent.getBroadcast(this, DAILY_ALARM_REQUEST_CODE, alarmIntent, pendingIntentDaily.FLAG_UPDATE_CURRENT);
             AlarmManager manager = (AlarmManager) getSystemService(Context.ALARM_SERVICE);
-            manager.setInexactRepeating(AlarmManager.RTC_WAKEUP, cal.getTimeInMillis(),AlarmManager.INTERVAL_DAY, pendingIntentDaily);
+            manager.setInexactRepeating(AlarmManager.RTC_WAKEUP, cal.getTimeInMillis()/1000,AlarmManager.INTERVAL_DAY, pendingIntentDaily);
         }
 
     }
