@@ -65,9 +65,7 @@ public class MainActivity extends AppCompatActivity {
         BottomNavigationView navView = findViewById(R.id.nav_view);
         setDailyNotification();
         setMovieReleaseNotification();
-
         navView.setOnNavigationItemSelectedListener(mOnNavigationItemSelectedListener);
-
         if(savedInstanceState == null){
             navView.setSelectedItemId(R.id.navigation_movie);
         }
@@ -99,7 +97,7 @@ public class MainActivity extends AppCompatActivity {
                             PassingData.setDataMovie(stackNotif);
                             pendingIntentRelease = PendingIntent.getBroadcast(MainActivity.this, RELEASE_ALARM_REQUEST_CODE, alarmIntent, pendingIntentRelease.FLAG_UPDATE_CURRENT);
                             AlarmManager manager = (AlarmManager) getSystemService(Context.ALARM_SERVICE);
-                            manager.setInexactRepeating(AlarmManager.RTC_WAKEUP, cal.getTimeInMillis()/1000, AlarmManager.INTERVAL_DAY, pendingIntentRelease);
+                            manager.setInexactRepeating(AlarmManager.RTC_WAKEUP, cal.getTimeInMillis(), AlarmManager.INTERVAL_DAY, pendingIntentRelease);
                         }
                 }
             }
@@ -118,7 +116,7 @@ public class MainActivity extends AppCompatActivity {
             Intent alarmIntent = new Intent(this, DailyNotificationReceiver.class);
             pendingIntentDaily = PendingIntent.getBroadcast(this, DAILY_ALARM_REQUEST_CODE, alarmIntent, pendingIntentDaily.FLAG_UPDATE_CURRENT);
             AlarmManager manager = (AlarmManager) getSystemService(Context.ALARM_SERVICE);
-            manager.setInexactRepeating(AlarmManager.RTC_WAKEUP, cal.getTimeInMillis()/1000,AlarmManager.INTERVAL_DAY, pendingIntentDaily);
+            manager.setInexactRepeating(AlarmManager.RTC_WAKEUP, cal.getTimeInMillis(),AlarmManager.INTERVAL_DAY, pendingIntentDaily);
         }
 
     }

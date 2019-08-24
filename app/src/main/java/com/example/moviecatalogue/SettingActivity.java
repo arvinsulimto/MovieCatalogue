@@ -52,7 +52,6 @@ public class SettingActivity extends AppCompatActivity {
         swDaily.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
             @Override
             public void onCheckedChanged(CompoundButton compoundButton, boolean b) {
-
                 if(!b){
                     sViewModel.updateDailyNotification(0);
                 }
