@@ -1,5 +1,6 @@
 package com.example.moviecatalogue.receiver;
 
+import android.app.AlarmManager;
 import android.app.Notification;
 import android.app.NotificationChannel;
 import android.app.NotificationManager;
@@ -11,11 +12,13 @@ import android.os.Build;
 import android.support.v4.app.NotificationCompat;
 import com.example.moviecatalogue.MainActivity;
 import com.example.moviecatalogue.R;
+
 import com.example.moviecatalogue.models.MovieTvResponse;
 import com.example.moviecatalogue.models.MoviesTv;
-import com.example.moviecatalogue.viewmodels.SettingViewModel;
+
 
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.List;
 
 public class MovieReleaseReceiver extends BroadcastReceiver {
@@ -24,24 +27,43 @@ public class MovieReleaseReceiver extends BroadcastReceiver {
     String RELEASE_NOTIFICATION_CHANNEL_ID = "release_notification_id";
     String RELEASE_NOTIFICATION_CHANNEL_NAME = "release_notification";
     String GROUP_KEY_RELEASE = "release_new_movie";
-
     private List<MoviesTv> listData = new ArrayList<>();
     private PendingIntent pendingIntentRelease;
     private int maxNotif = 2;
+
+    public void setReleaseNotification(Context context){
+        Calendar cal = Calendar.getInstance();
+        cal.set(Calendar.HOUR_OF_DAY,2);
+        cal.set(Calendar.MINUTE,31);
+        cal.set(Calendar.SECOND,0);
+        cal.set(Calendar.AM_PM,Calendar.PM);
+        if(cal.getTimeInMillis() > System.currentTimeMillis()) {
+            Intent alarmIntent = new Intent(context, MovieReleaseReceiver.class);
+            pendingIntentRelease = PendingIntent.getBroadcast(context, RELEASE_ALARM_REQUEST_CODE, alarmIntent, pendingIntentRelease.FLAG_UPDATE_CURRENT);
+            AlarmManager manager = (AlarmManager) context.getSystemService(Context.ALARM_SERVICE);
+            manager.setInexactRepeating(AlarmManager.RTC_WAKEUP, cal.getTimeInMillis(), AlarmManager.INTERVAL_DAY, pendingIntentRelease);
+        }
+    }
+
+    public void cancelAlarmRelease(Context context) {
+        AlarmManager alarmManager = (AlarmManager) context.getSystemService(Context.ALARM_SERVICE);
+        Intent intent = new Intent(context, MovieReleaseReceiver.class);
+        PendingIntent pendingIntent = PendingIntent.getBroadcast(context, RELEASE_ALARM_REQUEST_CODE, intent, 0);
+        pendingIntent.cancel();
+        if (alarmManager != null) {
+            alarmManager.cancel(pendingIntent);
+        }
+    }
 
     @Override
     public void onReceive(final Context context, Intent intent) {
         MovieTvResponse PassingData = MovieTvResponse.getInstance();
         listData = PassingData.getListData();
-
         Intent alarmIntent = new Intent(context, MainActivity.class);
         pendingIntentRelease = PendingIntent.getActivity(context, 0, alarmIntent, PendingIntent.FLAG_UPDATE_CURRENT);
         NotificationManager notificationManager = (NotificationManager) context.getSystemService(Context.NOTIFICATION_SERVICE);
         NotificationCompat.Builder builder;
-        SettingViewModel sViewModel = new SettingViewModel(context);
-        int release = sViewModel.checkReleaseNotification();
 
-        if(release == 1) {
             if (maxNotif > listData.size()) {
                 builder = new NotificationCompat.Builder(context, RELEASE_NOTIFICATION_CHANNEL_ID)
                         .setSmallIcon(R.drawable.ic_launcher_background)
@@ -80,6 +102,6 @@ public class MovieReleaseReceiver extends BroadcastReceiver {
             if (notificationManager != null) {
                 notificationManager.notify(RELEASE_ALARM_REQUEST_CODE, notification);
             }
-        }
+
     }
 }
